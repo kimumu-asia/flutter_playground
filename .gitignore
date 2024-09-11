@@ -1,0 +1,82 @@
+# Flutter/Dart 관련
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+pubspec.lock
+generated_plugin_registrant.dart
+
+# iOS 관련
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+
+# Xcode 관련
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/xcschemes/*
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+!*.xcworkspace/xcshareddata/xcschemes/*
+
+# Android 관련
+android/.gradle/
+android/app/build/
+android/local.properties
+android/app/proguard-rules.pro
+android/key.properties
+
+# Windows 관련
+windows/flutter/
+windows/runner/
+windows/.vs/
+windows/.flutter-plugins
+windows/.flutter-plugins-dependencies
+
+# macOS 관련
+macos/Flutter/ephemeral/
+macos/.flutter-plugins
+macos/.flutter-plugins-dependencies
+macos/Pods/
+
+# Web 관련
+web/.dart_tool/
+web/generated_plugin_registrant.dart
+web/canvaskit/
+
+# Linux 관련
+linux/flutter/
+linux/.flutter-plugins
+linux/.flutter-plugins-dependencies
+
+# VSCode 관련
+.vscode/
+.idea/
+
+# JetBrains 관련
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# 빌드 출력물 관련
+build/
+*.apk
+*.aab
+*.ipa
+
+# 기타
+.DS_Store
+*.log
+*.tmp
+*.lock
+*.swp
+*.swo
+*.bak
+*.old
+*.backup

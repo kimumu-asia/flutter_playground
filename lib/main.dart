@@ -22,6 +22,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: MainPage(),
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white, // 전체 배경색을 흰색으로 설정
+        ),
         routes: {
           '/login': (context) => LoginPage(),
         });

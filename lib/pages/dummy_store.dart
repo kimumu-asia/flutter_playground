@@ -3,7 +3,7 @@ const Map<String, dynamic> dummyStores = {
     "stores": [
       {
         "storeId": "634f90d8-a0b6-11ef-a1e6-877574b5d180",
-        "storeName": "스토어 1",
+        "storeName": "메종 드 라테",
         "phoneNumber": "01012340001",
         "zipcode": "08799",
         "address": "서울특별시 관악구 봉천동",
@@ -83,7 +83,7 @@ const Map<String, dynamic> dummyStores = {
       },
       {
         "storeId": "634f9592-a0b6-11ef-a1e6-877574b5d180",
-        "storeName": "스토어 2",
+        "storeName": "루시드 다이닝",
         "phoneNumber": "01012340002",
         "zipcode": "08799",
         "address": "서울특별시 관악구 신림동",

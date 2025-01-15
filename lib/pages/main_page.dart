@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../components/menu_card.dart';
 import '../widgets/bottom_navigation.dart';
-import '../widgets/menu_card.dart';
 import 'dummy_store.dart';
 import 'main_map_page.dart';
 
@@ -180,7 +180,7 @@ class _MainPageState extends State<MainPage> {
                     crossAxisCount: 1,
                     childAspectRatio: 2.5,
                     crossAxisSpacing: 14.0,
-                    mainAxisSpacing: 14.0,
+                    mainAxisSpacing: 0.0,
                   ),
                   itemCount: dummyStores['data']['stores'].length,
                   itemBuilder: (context, index) {
@@ -213,48 +213,53 @@ class _MainPageState extends State<MainPage> {
     final firstBenefit = benefitItems.isNotEmpty ? benefitItems[0] : null;
 
     return Container(
-      color: Colors.lightGreenAccent,
+      color: Colors.white,
       child: SizedBox.expand(
         child: Column(
           children: [
-            Card(
-              // color: Colors.transparent,
-              elevation: 0,
-              clipBehavior: Clip.hardEdge,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.zero, // 모서리 둥글기
-              ),
-              child: Column(
-                children: [
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(3, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: MenuCard(
-                            imageUrl:
-                                'https://plus.unsplash.com/premium_photo-1679503585289-c02467981894?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdHJhdW50fGVufDB8fDB8fHww',
-                            title: '후라이드 치킨',
-                            price: '18,000원',
-                            rating: 4.9,
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        store['storeName'],
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+            Expanded(
+              child: Card(
+                color: Colors.white,
+                elevation: 0,
+                clipBehavior: Clip.hardEdge,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero, // 모서리 둥글기
+                ),
+                child: Column(
+                  children: [
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(3, (index) {
+                          return Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 12.0),
+                            child: MenuCard(
+                              imageUrl:
+                                  'http://plus.unsplash.com/premium_photo-1679503585289-c02467981894?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdHJhdW50fGVufDB8fDB8fHww',
+                              title: '후라이드 치킨',
+                              price: '18,000원',
+                              rating: 4.9,
+                            ),
+                          );
+                        }),
                       ),
-                    ],
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(top: 4.0),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            store['storeName'],
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 14.0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -276,18 +281,21 @@ class _MainPageState extends State<MainPage> {
                                 fontSize: 12, color: Color(0xff8A8D9F)),
                           ),
                         ],
-                      )),
-                  Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildBadge("리뷰 ${store['reviewCount']}건"),
-                          SizedBox(width: 8), // 배지 간 간격
-                          _buildBadge("리뷰 ${store['reviewScore']}"),
-                        ],
-                      )),
-                ],
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 14.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _buildBadge("리뷰 ${store['reviewCount']}건"),
+                            SizedBox(width: 8), // 배지 간 간격
+                            _buildBadge("리뷰 ${store['reviewScore']}"),
+                          ],
+                        )),
+                  ],
+                ),
               ),
             ),
           ],

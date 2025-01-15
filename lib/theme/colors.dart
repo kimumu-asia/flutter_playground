@@ -13,6 +13,7 @@ abstract class AppColors {
   static const neutralBackgroundBlue = Color.fromRGBO(251, 253, 255, 1.0);
 
   static const accentPrimaryMainYellow = Color.fromRGBO(255, 188, 0, 1.0);
+  static const accentPrimaryMainDandelion = Color.fromRGBO(255, 193, 7, 1.0);
   static const accentPrimaryMainRed = Color.fromRGBO(239, 48, 36, 1.0);
   static const accentPrimaryMainOrange = Color.fromRGBO(255, 162, 107, 1.0);
   static const accentPrimaryMainBlue = Color.fromRGBO(0, 136, 255, 1.0);

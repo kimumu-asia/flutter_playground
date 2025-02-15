@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/theme/colors.dart';
 
 import '../components/menu_card.dart';
 import '../widgets/bottom_navigation.dart';
 import 'dummy_store.dart';
 import 'main_map_page.dart';
+import 'filter.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -11,7 +13,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0; // 선택된 탭 상태 관리
+  int _selectedCategoryIndex = 0; // 상태 관리 (상단 음식 종류 카테고리)
+  int _selectedIndex = 0; // 상태 관리 (선택된 탭)
   int _bottomSelectedIndex = 0;
 
   @override
@@ -20,33 +23,73 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0, // AppBar 그림자 제거
-        title: Container(
-          decoration: BoxDecoration(
-            color: Colors.white, // 검색창 배경색
-            borderRadius: BorderRadius.circular(30), // 둥근 테두리
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.08), // 그림자 색상
-                blurRadius: 12, // 그림자 흐림 정도
-                offset: Offset(0, 2), // 그림자 위치
+        title: Row(
+          children: [
+            Expanded(
+              child:Container(
+                decoration: BoxDecoration(
+                  color: Colors.white, // 검색창 배경색
+                  borderRadius: BorderRadius.circular(30), // 둥근 테두리
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.08), // 그림자 색상
+                      blurRadius: 12, // 그림자 흐림 정도
+                      offset: Offset(0, 2), // 그림자 위치
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  autocorrect: true,
+                  decoration: InputDecoration(
+                    hintText: '매장을 검색해 볼까요?',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    prefixIcon: Icon(Icons.search, color: Colors.grey),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30), // 둥근 테두리
+                      borderSide: BorderSide.none, // 보더 제거
+                    ),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 16, vertical: 12), // 내부 여백
+                  ),
+                ),
               ),
-            ],
-          ),
-          child: TextField(
-            autocorrect: true,
-            decoration: InputDecoration(
-              hintText: '매장을 검색해 볼까요?',
-              hintStyle: TextStyle(color: Colors.grey),
-              prefixIcon: Icon(Icons.search, color: Colors.grey),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30), // 둥근 테두리
-                borderSide: BorderSide.none, // 보더 제거
-              ),
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 12), // 내부 여백
             ),
-          ),
-        ),
+            SizedBox(width: 8),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: AppColors.borderGray,
+                  width: 1.5,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.08),
+                    blurRadius: 12,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: IconButton(
+                icon: Icon(Icons.tune, color: AppColors.textBodyGray), // 필터 아이콘 (조절 아이콘)
+                onPressed: () async {
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FilterScreen(),
+                    ),
+                  );
+
+                  if (result != null) {
+                    print("필터 결과: $result");
+                    // TODO: 선택된 필터값을 사용하여 매장 리스트 필터링
+                  }
+                },
+              ),
+            ),
+          ]
+        )
       ),
       body: Column(
         children: [
@@ -56,13 +99,16 @@ class _MainPageState extends State<MainPage> {
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.all(8.0),
               children: [
-                _buildCategoryItem('치킨'),
-                _buildCategoryItem('육류'),
-                _buildCategoryItem('족발 ∙ 보쌈'),
-                _buildCategoryItem('찜 ∙ 탕'),
-                _buildCategoryItem('회 ∙ 해물'),
-                _buildCategoryItem('한식'),
-                _buildCategoryItem('양식'),
+                _buildCategoryItem('치킨', 0),
+                _buildCategoryItem('육류', 1),
+                _buildCategoryItem('족발', 2),
+                _buildCategoryItem('보쌈', 3),
+                _buildCategoryItem('찜', 4),
+                _buildCategoryItem('탕', 5),
+                _buildCategoryItem('회', 6),
+                _buildCategoryItem('해물', 7),
+                _buildCategoryItem('한식', 8),
+                _buildCategoryItem('양식', 9),
               ],
             ),
           ),
@@ -80,16 +126,15 @@ class _MainPageState extends State<MainPage> {
                   child: Center(
                     child: Container(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 28, vertical: 4),
+                          EdgeInsets.symmetric(horizontal: 18, vertical: 10),
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: AppColors.textBodyBlack,
                         borderRadius: BorderRadius.circular(24), // 둥근 모서리
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           _buildTabIcon(Icons.store, '목록', 0),
-                          SizedBox(width: 20), // 아이콘 간 간격
                           _buildTabIcon(Icons.map_outlined, '지도', 1),
                         ],
                       ),
@@ -135,25 +180,32 @@ class _MainPageState extends State<MainPage> {
   Widget _buildTabIcon(IconData icon, String label, int index) {
     final bool isSelected = _selectedIndex == index;
 
+    if (isSelected) {
+      return SizedBox.shrink(); // 선택된 경우 아무것도 표시하지 않음
+    }
+
     return GestureDetector(
       onTap: () {
         setState(() {
           _selectedIndex = index;
         });
       },
-      child: Column(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             icon,
             size: 24,
-            color: isSelected ? Colors.white : Colors.grey,
+            color: Colors.white,
           ),
+          SizedBox(width: 6), // 배지 간 간격
           Text(
             label,
             style: TextStyle(
-              color: isSelected ? Colors.white : Colors.grey,
-              fontSize: 10,
+              color: Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
@@ -193,17 +245,41 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  Widget _buildCategoryItem(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14.0),
-      child: Column(
-        children: [
-          SizedBox(height: 8),
-          Text(
-            title,
-            style: TextStyle(fontSize: 14),
+  Widget _buildCategoryItem(String title, int index) {
+    final bool isSelected = _selectedCategoryIndex == index;
+    
+    return GestureDetector(
+      onTap: () {
+          setState(() {
+          _selectedCategoryIndex = index; // 선택된 카테고리 상태 업데이트
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: 20.0, // 최소 높이
           ),
-        ],
+          child: Column(
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                  color: isSelected ? AppColors.primaryGreen : Colors.black,
+                ),
+              ),
+              if (isSelected)
+                Container(
+                  margin: EdgeInsets.only(top: 4), // 텍스트와 간격
+                  width: 20, // 밑줄 너비
+                  height: 2, // 밑줄 두께
+                  color: Colors.green, // 선택된 밑줄 색상
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }

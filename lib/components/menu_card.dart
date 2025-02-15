@@ -78,7 +78,7 @@ class MenuCard extends StatelessWidget {
           ),
           // 텍스트 섹션
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 2.0, bottom: 12.0),
             child: Column(
               children: [
                 SizedBox(
@@ -86,8 +86,8 @@ class MenuCard extends StatelessWidget {
                   child: Text(
                     title,
                     style: TextStyle(
-                        fontSize: 14,
                         fontWeight: FontWeight.bold,
+                        fontSize: 17,
                         color: Colors.white),
                     textAlign: TextAlign.right, // 중앙 정렬
                     maxLines: 2, // 최대 2줄 허용
@@ -101,7 +101,7 @@ class MenuCard extends StatelessWidget {
                   child: Text(
                     price,
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 19,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                     textAlign: TextAlign.right, // 중앙 정렬

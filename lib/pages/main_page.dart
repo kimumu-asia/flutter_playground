@@ -6,6 +6,7 @@ import '../widgets/bottom_navigation.dart';
 import 'dummy_store.dart';
 import 'main_map_page.dart';
 import 'filter.dart';
+import 'search.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -40,6 +41,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 child: TextField(
                   autocorrect: true,
+                  readOnly: true,
                   decoration: InputDecoration(
                     hintText: '매장을 검색해 볼까요?',
                     hintStyle: TextStyle(color: Colors.grey),
@@ -51,6 +53,19 @@ class _MainPageState extends State<MainPage> {
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 16, vertical: 12), // 내부 여백
                   ),
+                  onTap: () async {
+                    final result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SearchScreen(),
+                      ),
+                    );
+
+                    if (result != null) {
+                      print("필터 결과: $result");
+                      // TODO: 선택된 필터값을 사용하여 매장 리스트 필터링
+                    }
+                  },
                 ),
               ),
             ),

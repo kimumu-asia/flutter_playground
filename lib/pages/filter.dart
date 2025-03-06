@@ -50,10 +50,10 @@ class _FilterScreenState extends State<FilterScreen> {
               _buildFilterCard("항목별 점수", _buildRatingCriteria()),
               _buildFilterCard("오픈 상태", _buildOpenStatusFilter()),
               SizedBox(height: 20),
-              _buildActionButtons(),
             ],
           ),
         ),
+        bottomNavigationBar: _buildActionButtons(),
       ),
     );
   }

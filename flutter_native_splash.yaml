@@ -1,0 +1,11 @@
+flutter_native_splash:
+  image: assets/images/splash/splash.png 
+  image_dark: assets/images/splash/splash.png
+  background_image: assets/images/splash/background.png
+  background_image_dark: assets/images/splash/background.png
+  ios: true
+  android: true
+  android_12:
+    image: assets/images/splash/splash.png 
+    background_image: assets/images/splash/background.png
+    background_image_dark: assets/images/splash/background.png

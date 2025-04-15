@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hello_flutter/pages/login_page.dart';
 import 'package:hello_flutter/pages/main_page.dart';
+import 'package:provider/provider.dart';
 
 import 'graphql/client.dart';
+import 'viewModels/store_detail_view_model.dart';
 
 void main() async {
   final client = await initializeGraphqlClient();
 
-  runApp(GraphQLProvider(
-    client: client,
-    child: const MyApp(),
-  ));
+  runApp(
+    GraphQLProvider(
+      client: client,
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => StoreDetailViewModel()),
+        ],
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

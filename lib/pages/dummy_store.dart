@@ -9,7 +9,8 @@ const Map<String, dynamic> dummyStores = {
         "address": "서울특별시 관악구 봉천동",
         "addressDetail": "상세 주소 1",
         "reviewCount": 10,
-        "reviewScore": 4.5,
+        "reviewRate": 4.5,
+        "visitCount": 0,
         "latitude": 37.4821,
         "longitude": 126.9304,
         "benefitItems": [
@@ -89,7 +90,8 @@ const Map<String, dynamic> dummyStores = {
         "address": "서울특별시 관악구 신림동",
         "addressDetail": "상세 주소 2",
         "reviewCount": 8,
-        "reviewScore": 4.0,
+        "reviewRate": 4.0,
+        "visitCount": 0,
         "latitude": 37.4842,
         "longitude": 126.9295,
         "benefitItems": [
@@ -169,7 +171,8 @@ const Map<String, dynamic> dummyStores = {
         "address": "서울특별시 관악구 남현동",
         "addressDetail": "상세 주소 3",
         "reviewCount": 15,
-        "reviewScore": 3.5,
+        "reviewRate": 3.5,
+        "visitCount": 0,
         "latitude": 37.4761,
         "longitude": 126.9638,
         "benefitItems": [
@@ -249,7 +252,8 @@ const Map<String, dynamic> dummyStores = {
         "address": "서울특별시 관악구 미성동",
         "addressDetail": "상세 주소 4",
         "reviewCount": 20,
-        "reviewScore": 4.7,
+        "reviewRate": 4.7,
+        "visitCount": 0,
         "latitude": 37.4782,
         "longitude": 126.9529,
         "benefitItems": [
@@ -328,8 +332,9 @@ const Map<String, dynamic> dummyStores = {
         "zipcode": "08799",
         "address": "서울특별시 관악구 난곡동",
         "addressDetail": "상세 주소 5",
+        "visitCount": 0,
         "reviewCount": 5,
-        "reviewScore": 3.8,
+        "reviewRate": 3.8,
         "latitude": 37.4673,
         "longitude": 126.9294,
         "benefitItems": [
@@ -409,7 +414,8 @@ const Map<String, dynamic> dummyStores = {
         "address": "서울특별시 관악구 대학동",
         "addressDetail": "상세 주소 6",
         "reviewCount": 12,
-        "reviewScore": 4.2,
+        "reviewRate": 4.2,
+        "visitCount": 0,
         "latitude": 37.4692,
         "longitude": 126.9373,
         "benefitItems": [
@@ -489,7 +495,8 @@ const Map<String, dynamic> dummyStores = {
         "address": "서울특별시 관악구 은천동",
         "addressDetail": "상세 주소 7",
         "reviewCount": 18,
-        "reviewScore": 4.0,
+        "reviewRate": 4.0,
+        "visitCount": 0,
         "latitude": 37.4871,
         "longitude": 126.9432,
         "benefitItems": [
@@ -569,7 +576,8 @@ const Map<String, dynamic> dummyStores = {
         "address": "서울특별시 관악구 중앙동",
         "addressDetail": "상세 주소 8",
         "reviewCount": 25,
-        "reviewScore": 4.9,
+        "reviewRate": 4.9,
+        "visitCount": 0,
         "latitude": 37.4892,
         "longitude": 126.9531,
         "benefitItems": [
@@ -649,7 +657,8 @@ const Map<String, dynamic> dummyStores = {
         "address": "서울특별시 관악구 서림동",
         "addressDetail": "상세 주소 9",
         "reviewCount": 7,
-        "reviewScore": 3.9,
+        "reviewRate": 3.9,
+        "visitCount": 0,
         "latitude": 37.4913,
         "longitude": 126.961,
         "benefitItems": [

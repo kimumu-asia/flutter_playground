@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/theme/colors.dart';
+import 'package:provider/provider.dart';
 
 import '../components/menu_card.dart';
 import '../widgets/bottom_navigation.dart';
+import '../viewModels/store_detail_view_model.dart';
 import 'dummy_store.dart';
 import 'main_map_page.dart';
+import 'store_detail_page.dart';
 import 'filter.dart';
 import 'search.dart';
 
@@ -309,83 +312,549 @@ class _MainPageState extends State<MainPage> {
         child: Column(
           children: [
             Expanded(
-              child: Card(
-                color: Colors.white,
-                elevation: 0,
-                clipBehavior: Clip.hardEdge,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.zero, // 모서리 둥글기
-                ),
-                child: Column(
-                  children: [
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(3, (index) {
-                          return Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 12.0),
-                            child: MenuCard(
-                              imageUrl:
-                                  'http://plus.unsplash.com/premium_photo-1679503585289-c02467981894?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdHJhdW50fGVufDB8fDB8fHww',
-                              title: '후라이드 치킨',
-                              price: '18,000원',
-                              rating: 4.9,
-                            ),
-                          );
-                        }),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 14.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            store['storeName'],
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
+              child: GestureDetector(
+                onTap: () {
+                  // Provider.of<StoreDetailViewModel>(context, listen: false).setStore(store);
+                  Provider.of<StoreDetailViewModel>(context, listen: false).setStore({
+                    "place": {
+                      "placeId": "a91728b8-f42d-11ef-b57a-0242ac110002",
+                      "placeName": "레드제플린",
+                      "phoneNumber": "01042877671",
+                      "email": null,
+                      "zipcode": "08778 ",
+                      "address": "서울특별시 관악구 신림동 1641-50",
+                      "addressDetail": "1층",
+                      "latitude": 37.4808476,
+                      "longitude": 126.93036499999998,
+                      "reservable": true,
+                      "takeout": false,
+                      "placeSummary": {
+                        "placeId": "a91728b8-f42d-11ef-b57a-0242ac110002",
+                        "visitAvg": 0,
+                        "visitCount": 0,
+                        "reviewTotalAvg": 4.8,
+                        "reviewTasteAvg": 0,
+                        "reviewServiceAvg": 0,
+                        "reviewAtmosphereAvg": 0,
+                        "reviewCleanlinessAvg": 0,
+                        "reviewValueAvg": 0,
+                        "reviewTotalCount": 5,
+                        "reviewTasteCount": 0,
+                        "reviewServiceCount": 0,
+                        "reviewAtmosphereCount": 0,
+                        "reviewCleanlinessCount": 0,
+                        "reviewValueCount": 0,
+                        "benefitItemTitles": [
+                          "라면",
+                          "쥬스",
+                          "콜라",
+                          "환타",
+                          "사이다",
+                          "하이볼 한잔",
+                          "계란말이",
+                          "미니피자",
+                          "맥주 1병",
+                          "소주 1병",
+                          "청하 1병",
+                          "10% 할인",
+                          "3,000원 할인",
+                          "생맥주 500cc"
                         ],
-                      ),
+                        "placeTypeTitles": [
+                          "바 ∙ 술집"
+                        ]
+                      }
+                    },
+                    "placeId": "a91728b8-f42d-11ef-b57a-0242ac110002",
+                    "placeName": "레드제플린",
+                    "placeTypeTitles": [
+                        "바 ∙ 술집"
+                    ],
+                    "visitRate": 0.0,
+                    "visitCount": 0,
+                    "reviewRate": 4.8,
+                    "reviewCount": 5,
+                    "phoneNumber": "01042877671",
+                    "email": null,
+                    "address": "서울특별시 관악구 신림동 1641-50",
+                    "addressDetail": "",
+                    "zipcode": "08778 ",
+                    "latitude": 37.4808476,
+                    "longitude": 126.93036499999998,
+                    "reservable": true,
+                    "takeout": false,
+                    "createdAt": "2025-02-26T10:37:21.976812Z",
+                    "placeMainItems": [
+                        {
+                            "placeMainItemId": null,
+                            "placeItemId": "1395e226-dee2-4169-8d3b-6cc0514d16f3",
+                            "itemName": "배꼽시계",
+                            "itemPrice": 10000,
+                            "itemImageUrl": "https://placehold.co/400x400",
+                            "itemDescription": "배꼽시계 설명",
+                            "itemDiscountPrice": 10000,
+                            "itemDiscountRate": 10,
+                            "sort": null,
+                            "createdAt": null
+                        }
+                    ],
+                    "placeHours": [
+                        {
+                            "dayOfWeek": 0,
+                            "openTime": "19:00",
+                            "closeTime": "03:00",
+                            "breakStart": null,
+                            "breakEnd": null
+                        },
+                        {
+                            "dayOfWeek": 1,
+                            "openTime": "19:00",
+                            "closeTime": "03:00",
+                            "breakStart": null,
+                            "breakEnd": null
+                        },
+                        {
+                            "dayOfWeek": 2,
+                            "openTime": "19:00",
+                            "closeTime": "03:00",
+                            "breakStart": null,
+                            "breakEnd": null
+                        },
+                        {
+                            "dayOfWeek": 3,
+                            "openTime": "19:00",
+                            "closeTime": "03:00",
+                            "breakStart": null,
+                            "breakEnd": null
+                        },
+                        {
+                            "dayOfWeek": 4,
+                            "openTime": "19:00",
+                            "closeTime": "03:00",
+                            "breakStart": null,
+                            "breakEnd": null
+                        },
+                        {
+                            "dayOfWeek": 5,
+                            "openTime": "19:00",
+                            "closeTime": "03:00",
+                            "breakStart": null,
+                            "breakEnd": null
+                        },
+                        {
+                            "dayOfWeek": 6,
+                            "openTime": "19:00",
+                            "closeTime": "03:00",
+                            "breakStart": null,
+                            "breakEnd": null
+                        }
+                    ],
+                    "placeBenefits": [
+                        {
+                            "placeBenefitId": "15bdcd5e-f812-11ef-b5c9-6b5ce1a7dcc3",
+                            "benefitCategoryTitle": "기본혜택",
+                            "hasCondition": true,
+                            "conditionValue": "15000",
+                            "benefitTitle": "5,000원 혜택",
+                            "placeBenefitItemGroups": [
+                                {
+                                    "id": "533f0b4e-f28f-11ef-b12c-1957147f23d8",
+                                    "title": "주류",
+                                    "data": {
+                                        "ageLimit": true
+                                    },
+                                    "items": [
+                                        {
+                                            "id": "3fbad394-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "맥주 1병",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fbc2f78-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "생맥주 500cc",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fb979ae-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "소주 1병",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fbf31fa-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "청하 1병",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fbdb26c-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "하이볼 한잔",
+                                            "benefitPrice": 5000
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "533f0b9e-f28f-11ef-b12c-1957147f23d8",
+                                    "title": "금액할인",
+                                    "data": {
+                                        "ageLimit": false
+                                    },
+                                    "items": [
+                                        {
+                                            "id": "3fc23710-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "10% 할인",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fc0dd52-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "3,000원 할인",
+                                            "benefitPrice": 5000
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "533f0be4-f28f-11ef-b12c-1957147f23d8",
+                                    "title": "음료",
+                                    "data": {
+                                        "ageLimit": false
+                                    },
+                                    "items": [
+                                        {
+                                            "id": "3fc66ba0-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "사이다",
+                                            "benefitPrice": 3000
+                                        },
+                                        {
+                                            "id": "3fc7eade-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "쥬스",
+                                            "benefitPrice": 3000
+                                        },
+                                        {
+                                            "id": "3fc3940c-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "콜라",
+                                            "benefitPrice": 3000
+                                        },
+                                        {
+                                            "id": "3fc4fa7c-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "환타",
+                                            "benefitPrice": 3000
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "533f0c3e-f28f-11ef-b12c-1957147f23d8",
+                                    "title": "특별메뉴",
+                                    "data": {
+                                        "ageLimit": false
+                                    },
+                                    "items": [
+                                        {
+                                            "id": "3fca932e-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "계란말이",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fcbda2c-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "라면",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fc9460e-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "미니피자",
+                                            "benefitPrice": 5000
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "placeBenefitId": "15bf2834-f812-11ef-b5c9-6b5ce1a7dcc3",
+                            "benefitCategoryTitle": "기본혜택",
+                            "hasCondition": true,
+                            "conditionValue": "20000",
+                            "benefitTitle": "6,000원 혜택",
+                            "placeBenefitItemGroups": [
+                                {
+                                    "id": "533f0b4e-f28f-11ef-b12c-1957147f23d8",
+                                    "title": "주류",
+                                    "data": {
+                                        "ageLimit": true
+                                    },
+                                    "items": [
+                                        {
+                                            "id": "3fce8b28-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "맥주 1병",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fcfe658-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "생맥주 500cc",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fcd31c4-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "소주 1병",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fd2c260-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "청하 1병",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fd168ac-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "하이볼 한잔",
+                                            "benefitPrice": 5000
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "533f0b9e-f28f-11ef-b12c-1957147f23d8",
+                                    "title": "금액할인",
+                                    "data": {
+                                        "ageLimit": false
+                                    },
+                                    "items": [
+                                        {
+                                            "id": "3fd5a796-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "10% 할인",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fd44414-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "3,000원 할인",
+                                            "benefitPrice": 5000
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "533f0be4-f28f-11ef-b12c-1957147f23d8",
+                                    "title": "음료",
+                                    "data": {
+                                        "ageLimit": false
+                                    },
+                                    "items": [
+                                        {
+                                            "id": "3fda84a0-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "사이다",
+                                            "benefitPrice": 3000
+                                        },
+                                        {
+                                            "id": "3fdbfcd6-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "쥬스",
+                                            "benefitPrice": 3000
+                                        },
+                                        {
+                                            "id": "3fd70c58-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "콜라",
+                                            "benefitPrice": 3000
+                                        },
+                                        {
+                                            "id": "3fd86562-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "환타",
+                                            "benefitPrice": 3000
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "533f0c3e-f28f-11ef-b12c-1957147f23d8",
+                                    "title": "특별메뉴",
+                                    "data": {
+                                        "ageLimit": false
+                                    },
+                                    "items": [
+                                        {
+                                            "id": "3fdec4fc-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "계란말이",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fe02072-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "라면",
+                                            "benefitPrice": 5000
+                                        },
+                                        {
+                                            "id": "3fdd681e-f813-11ef-9cb1-613ce4a7c27f",
+                                            "title": "미니피자",
+                                            "benefitPrice": 5000
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "placeItems": null,
+                    "placeReviews": {
+                        "pageNumber": 0,
+                        "pageSize": 5,
+                        "totalElements": 5,
+                        "totalPages": 1,
+                        "last": true,
+                        "first": true,
+                        "content": [
+                            {
+                                "authorName": "Chang-Yong Park,",
+                                "score": 4,
+                                "description": "LP음악과 신청곡으로 맥주를 마시는 바\n그날 오는 손님에 따라 음악 장르가 다르네요.",
+                                "createdAt": "2024-07-29T04:04:30.734504Z",
+                                "updatedAt": "2025-03-14T08:18:08.891675Z",
+                                "user": null,
+                                "placeItem": {
+                                    "placeItemId": "d5d1ed4e-00ac-11f0-ae9a-bd6d6a8644a8",
+                                    "itemName": "육사시미-3",
+                                    "price": 30000,
+                                    "reviewRate": 0.0,
+                                    "reviewCount": 0
+                                }
+                            },
+                            {
+                                "authorName": "Sabbath",
+                                "score": 5,
+                                "description": "칵테일과 맥주, 와인, 안주가 있습니다. 칵테일의 경우 데킬라 선라이즈 등 간단한 믹스 칵테일 위주입니다. 신청곡을 최소 한 곡 이상 틀어주시는데, 사람이 많을 때는 밀리거나 많은 곡을 못 들을 때도 있지만 사람이 없을 때는 거의 쓰는 대로 틀어주십니다. 음악 소리가 큰 편이라 대화보다는 서로 음악 추천해주거나, 혼자 오시는 것을 추천합니다. 아주 아늑하고 사장님도 좋으셔서 매달 한 번 이상은 가게 되는, 마음의 고향입니다. 락이나 메탈을 좋아하신다면 좋은 음악을 많이 알아갈 수 있고, 가끔 바테이블에서 옆 손님들과 이야기를 나누는 것도 재미있습니다. 그리고 가끔 라이브도 합니다. 오래 유지되었으면 하는 가게입니다.",
+                                "createdAt": "2024-03-12T14:40:39.234534Z",
+                                "updatedAt": "2025-03-14T08:18:08.891675Z",
+                                "user": null,
+                                "placeItem": {
+                                    "placeItemId": "d5d1ed4e-00ac-11f0-ae9a-bd6d6a8644a8",
+                                    "itemName": "육사시미-3",
+                                    "price": 30000,
+                                    "reviewRate": 0.0,
+                                    "reviewCount": 0
+                                }
+                            },
+                            {
+                                "authorName": "김로아",
+                                "score": 5,
+                                "description": "낭만있어요\n음악이 너무 좋아서\n친구들과 2차로 왔었는데\n캬~~완전좋았음\n자주오고싶은데 ~~내가 너무 멀리살아요 ㅜ",
+                                "createdAt": "2023-01-28T16:40:04.593298Z",
+                                "updatedAt": "2025-03-14T08:18:08.891675Z",
+                                "user": null,
+                                "placeItem": {
+                                    "placeItemId": "d5d62080-00ac-11f0-ae9a-bd6d6a8644a8",
+                                    "itemName": "육사시미-4",
+                                    "price": 30000,
+                                    "reviewRate": 0.0,
+                                    "reviewCount": 0
+                                }
+                            },
+                            {
+                                "authorName": "janet자넷",
+                                "score": 5,
+                                "description": "신청곡 틀어줘요 아이돌은 안된다고 하더라구요 ^^;; 버드와이저 좋아해서 이차로 좋아요 오래전부터 있던 가게인데 아직도 여긴 장사를 하네요 ^^ 레트로 감성 가지기 좋습니다",
+                                "createdAt": "2020-10-28T02:52:37.190803Z",
+                                "updatedAt": "2025-03-14T08:18:08.891675Z",
+                                "user": null,
+                                "placeItem": {
+                                    "placeItemId": "d5d1ed4e-00ac-11f0-ae9a-bd6d6a8644a8",
+                                    "itemName": "육사시미-3",
+                                    "price": 30000,
+                                    "reviewRate": 0.0,
+                                    "reviewCount": 0
+                                }
+                            },
+                            {
+                                "authorName": "샤니콩",
+                                "score": 5,
+                                "description": "신림 LP바&뮤직펍\n분위기 너무좋아요\n노래 신청도 가능하구요\n사운드 빵빵하게 좋은노래 듣고싶은노래 많이 듣고 왔어요!!!\n사장님 친절하시고 서비스 짱짱👍👍👍\n단골됬어요♡♡♡",
+                                "createdAt": "2018-07-11T14:06:14.524Z",
+                                "updatedAt": "2025-03-14T08:18:08.891675Z",
+                                "user": null,
+                                "placeItem": {
+                                    "placeItemId": "d5c8f14e-00ac-11f0-ae9a-bd6d6a8644a8",
+                                    "itemName": "육사시미-1",
+                                    "price": 30000,
+                                    "reviewRate": 0.0,
+                                    "reviewCount": 0
+                                }
+                            }
+                        ]
+                    },
+                    "placeRegularHolidays": []
+                });
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => StoreDetailScreen(),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 14.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '재방문률 4.2%',
-                            style: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(width: 2), // 배지 간 간격
-                          Text(
-                            '∙한식',
-                            style: TextStyle(
-                                fontSize: 12, color: Color(0xff8A8D9F)),
-                          ),
-                          SizedBox(width: 2), // 배지 간 간격
-                          Text(
-                            '∙방문자 수 100명 ',
-                            style: TextStyle(
-                                fontSize: 12, color: Color(0xff8A8D9F)),
-                          ),
-                        ],
+                  );
+                },
+                child: Card(
+                  color: Colors.white,
+                  elevation: 0,
+                  clipBehavior: Clip.hardEdge,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero, // 모서리 둥글기
+                  ),
+                  child: Column(
+                    children: [
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(3, (index) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: MenuCard(
+                                imageUrl:
+                                    'http://plus.unsplash.com/premium_photo-1679503585289-c02467981894?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdHJhdW50fGVufDB8fDB8fHww',
+                                title: '후라이드 치킨',
+                                price: '18,000원',
+                                rating: 4.9,
+                              ),
+                            );
+                          }),
+                        ),
                       ),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 14.0),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 14.0),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildBadge("리뷰 ${store['reviewCount']}건"),
-                            SizedBox(width: 8), // 배지 간 간격
-                            _buildBadge("리뷰 ${store['reviewScore']}"),
+                            Text(
+                              store['storeName'],
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
                           ],
-                        )),
-                  ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '재방문률 4.2%',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(width: 2), // 배지 간 간격
+                            Text(
+                              '∙한식',
+                              style: TextStyle(
+                                  fontSize: 12, color: Color(0xff8A8D9F)),
+                            ),
+                            SizedBox(width: 2), // 배지 간 간격
+                            Text(
+                              '∙방문자 수 100명 ',
+                              style: TextStyle(
+                                  fontSize: 12, color: Color(0xff8A8D9F)),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 14.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildBadge("리뷰 ${store['reviewCount']}건"),
+                              SizedBox(width: 8), // 배지 간 간격
+                              _buildBadge("리뷰 ${store['reviewScore']}"),
+                            ],
+                          )),
+                    ],
+                  ),
                 ),
               ),
             ),

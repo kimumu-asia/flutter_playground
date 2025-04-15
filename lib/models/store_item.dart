@@ -1,12 +1,14 @@
 class StoreItem {
   String storeName;
   String imageUrl;
-  String? reviewScore;
-  String? reviewCount;
+  String? reviewRate;
+  String? revisitRate;
+  String? visitCount;
 
   StoreItem(
       {required this.storeName,
       required this.imageUrl,
-      this.reviewScore,
-      this.reviewCount});
+      this.reviewRate,
+      this.revisitRate,
+      this.visitCount});
 }
